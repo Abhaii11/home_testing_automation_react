@@ -9,6 +9,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import ListGroup from "react-bootstrap/ListGroup";
 import Dropdown from "react-bootstrap/Dropdown";
+import TodoItem from './components/TodoItem';
+import Filters from './components/Filters';
+
 
 
 class App extends Component {
@@ -32,24 +35,14 @@ class App extends Component {
 
     // Add item if user input is not empty
     addItem() {
-        if (this.state.userInput !== "") {
-            const userInput = {
-                id: Math.random(), // Random ID
-                value: this.state.userInput, // Task text
-                completed: false, // Completion status
-            };
+      if (this.state.userInput.trim() === "") {
+          return; // Prevent adding empty tasks
+      }
+      const userInput = { id: Math.random(), value: this.state.userInput, completed: false };
+      this.setState({ list: [...this.state.list, userInput], userInput: "" });
+  }
 
-            // Update list
-            const list = [...this.state.list];
-            list.push(userInput);
 
-            // Reset state
-            this.setState({
-                list,
-                userInput: "",
-            });
-        }
-    }
 
     // Toggle completion status of a task
     toggleCompletion(key) {

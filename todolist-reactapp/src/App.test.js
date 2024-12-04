@@ -33,33 +33,36 @@ describe("Todo App", () => {
   test("does not add an empty task", () => {
     render(<App />);
     const addButton = screen.getByText("ADD");
-  
-    // Ensure clicking 'ADD' without entering text doesn't add tasks
+
     fireEvent.click(addButton);
-  
-    // Check that no tasks are added
+
+    // Log the DOM for debugging
+    screen.debug();
+
     const listItems = screen.queryAllByRole("listitem");
     expect(listItems.length).toBe(0);
-  });
+});
+
+
   
 
-  test("deletes a task when delete button is clicked", () => {
-    render(<App />);
-    const input = screen.getByPlaceholderText("Add item . . .");
-    const addButton = screen.getByText("ADD");
+test("deletes a task when delete button is clicked", () => {
+  render(<App />);
+  const input = screen.getByPlaceholderText("Add item . . .");
+  const addButton = screen.getByText("ADD");
 
-    // Add a new task
-    fireEvent.change(input, { target: { value: "Task to be deleted" } });
-    fireEvent.click(addButton);
+  // Add a new task
+  fireEvent.change(input, { target: { value: "Task to be deleted" } });
+  fireEvent.click(addButton);
 
-    // Check if the task was added
-    expect(screen.getByText("Task to be deleted")).toBeInTheDocument();
+  // Ensure the task is added
+  expect(screen.getByText("Task to be deleted")).toBeInTheDocument();
 
-    // Click the delete button
-    const deleteButton = screen.getByText("Delete");
-    fireEvent.click(deleteButton);
+  // Click the delete button
+  const deleteButton = screen.getByText("Delete");
+  fireEvent.click(deleteButton);
 
-    // Check if the task was deleted
-    expect(screen.queryByText("Task to be deleted")).not.toBeInTheDocument();
-  });
+  // Check if the task was deleted
+  expect(screen.queryByText("Task to be deleted")).not.toBeInTheDocument();
+});
 });
