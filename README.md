@@ -29,15 +29,16 @@ A simple React-based Todo List application designed for managing tasks efficient
 3. **Install dependencies**:
     ```bash
    npm install
-  node install by browser
 4. **Run the application**:
-    ```bash
-  npm start
+    ```
+   npm start
 5. **View the application**:
 Open your browser and visit: http://localhost:3000.
 
 
-**Testing**
+
+# **Testing**
+
 Unit and Integration Tests
 The application includes tests for:
 
@@ -47,21 +48,21 @@ Marking tasks as completed/uncompleted.
 Filtering tasks.
 
 
-Run unit and integration tests:
+**Run unit and integration tests**:
 npm test
-
 
 ## **Project Structure**
 scss
-Copy code
-src/
-  components/
-    Filters.jsx      // Component for filtering tasks
-    TodoItem.jsx     // Component for individual tasks
-  App.js             // Main application logic
-  App.test.js        // Unit and integration tests
+- Copy code
+- src/
+  - components/
+    - Filters.jsx      // Component for filtering tasks
+    - TodoItem.jsx     // Component for individual tasks
+  - App.js             // Main application logic
+  - App.test.js        // Unit and integration tests
+  - 
   
-**Technologies Used**
+## **Technologies Used**
 
 Frontend:
 - React
@@ -81,13 +82,11 @@ Testing:
 Contributions are welcome! To contribute:
 
 Fork the repository.
-Create a new branch:
+```
   git checkout -b feature-name
 
-Commit your changes:
   git commit -m "Add feature name"
-
-Push to the branch:   
+   
   git push origin feature-name
 
-Open a pull request.
+  Open a pull request.
